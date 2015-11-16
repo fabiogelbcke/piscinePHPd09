@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <input type="text" id="firstno">
+    <select id="operation">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+    </select>
+    <input type="text" id="secondno">
+    <input type="submit" value="Try me!" onclick="calculate()">
+  </body>
+  <script>
+    function isNormalInteger(str) {
+    var n = ~~Number(str);
+    return String(n) === str && n >= 0;
+    }
+    function isZero(str){
+    var n = ~~Number(str);
+    return n == 0;
+    }
+    function calculate(){
+    var firstno = document.getElementById("firstno").value;
+    var secondno = document.getElementById("secondno").value;
+    var operation = document.getElementById("operation").value;
+    if (!isNormalInteger(firstno) || !isNormalInteger(secondno)){
+    alert("Error :(");
+    }
+    else if ((operation == "%" || operation == "/") && isZero(secondno)){
+    alert("It's over 9000!");
+    console.log("It's over 9000!");
+    }
+    else{
+    var result = eval(firstno+operation+secondno);
+    alert(result);
+    console.log(result);
+    }
+    }
+    window.setInterval(function(){
+    alert("Please, use me...");
+}, 30000);
+  </script>
+ </html>
